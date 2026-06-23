@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — R&C Metal Pty Ltd</title>
+  <meta name="description" content="Contact R&C Metal Pty Ltd in Australia for aluminium product enquiries, project coordination, quote support, and certified manufacturing supply access." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ─── CONTACT-ONLY STYLES ────────────────────────────────── */
+
+    .contact-section {
+      padding: var(--section-pad);
+      background: var(--bg-dark);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ─── INFO PANEL ─────────────────────────────────────────── */
+    .contact-info-panel {
+      position: sticky;
+      top: 88px;
+    }
+
+    .contact-info-panel h2 {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .contact-info-panel h2 span { color: var(--rust-primary); }
+
+    .contact-info-panel > p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .info-block {
+      background: linear-gradient(160deg, var(--bg-light), var(--bg-mid));
+      border: 1px solid var(--border-steel);
+      border-left: 4px solid var(--rust-primary);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .info-block .icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .info-block h4 {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rust-primary);
+      margin-bottom: 5px;
+    }
+
+    .info-block p,
+    .info-block a {
+      font-size: 15px;
+      color: var(--text-primary);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .info-block a:hover { color: var(--rust-light); }
+
+    /* Port distances table */
+    .ports-grid {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+    }
+
+    .ports-grid tr td {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 4px 0;
+    }
+
+    .ports-grid tr td:last-child {
+      text-align: right;
+      color: var(--rust-primary);
+      font-weight: 600;
+    }
+
+    /* ─── FORM PANEL ─────────────────────────────────────────── */
+    .contact-form-panel {
+      background: linear-gradient(160deg, var(--bg-light) 0%, var(--bg-mid) 100%);
+      border: 1px solid var(--border-steel);
+      border-top: 4px solid var(--rust-primary);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px
+      );
+      pointer-events: none;
+    }
+
+    .form-rivet-tl, .form-rivet-tr {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #aaa, #444);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+    .form-rivet-tl { top: 14px; left: 14px; }
+    .form-rivet-tr { top: 14px; right: 14px; }
+
+    .contact-form-panel h2 {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      position: relative;
+    }
+
+    .contact-form-panel > p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-submit {
+      margin-top: 8px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Success message (hidden by default) */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .form-success-icon {
+      font-size: 56px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .form-success h3 {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .form-success p {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* ─── MAP PLACEHOLDER ─────────────────────────────────────── */
+    .map-section {
+      padding: 0 0 80px;
+      background: var(--bg-dark);
+    }
+
+    .map-placeholder {
+      background:
+        repeating-linear-gradient(
+          0deg, transparent, transparent 40px,
+          rgba(196, 80, 30, 0.04) 40px, rgba(196, 80, 30, 0.04) 41px
+        ),
+        repeating-linear-gradient(
+          90deg, transparent, transparent 40px,
+          rgba(196, 80, 30, 0.04) 40px, rgba(196, 80, 30, 0.04) 41px
+        ),
+        linear-gradient(180deg, var(--bg-mid), var(--bg-darkest));
+      height: 320px;
+      border: 1px solid var(--border-rust);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .map-placeholder .map-icon { font-size: 40px; filter: grayscale(0.5) opacity(0.5); }
+
+    .map-placeholder p {
+      font-family: var(--font-accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .map-placeholder .map-sub {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .contact-info-panel { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-panel { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">RC</div>
+        <span class="logo-text" data-zh="R&amp;C <span>金属</span>">R&amp;C <span>Metal</span></span>
+      </a>
+      <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" data-zh="首页">Home</a></li>
+        <li><a href="services.html" data-zh="产品">Products</a></li>
+        <li><a href="about.html" data-zh="关于我们">About</a></li>
+        <li><a href="contact.html" class="active" data-zh="联系我们">Contact</a></li>
+      </ul>
+      <button class="lang-btn" onclick="toggleLang()">中文</button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PAGE HERO
+  ════════════════════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="rivets">
+          <div class="rivet"></div>
+          <div class="rivet"></div>
+          <div class="rivet"></div>
+        </div>
+        <h1 data-zh="联系 <span>我们</span>">Get in <span>Touch</span></h1>
+        <p data-zh="欢迎就澳洲项目需求、技术参数或报价事宜与 R&amp;C Metal 联系，我们将在本地协助对接制造资源并跟进供应沟通。">Contact R&C Metal for Australian project requirements, technical questions, or quote support. We help coordinate manufacturing access and supply communication locally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CONTACT LAYOUT
+  ════════════════════════════════════════════════════════════ -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- LEFT: Contact Info -->
+        <div class="contact-info-panel">
+          <h2 data-zh="开始 <span>合作</span>">Let's <span>Talk</span></h2>
+          <p data-zh="无论您已有详细规格还是只有初步设想，R&amp;C Metal 都可在澳洲本地协助整理需求、协调报价并对接制造合作方。">Whether you have detailed specifications or an early concept, R&C Metal can help clarify requirements, coordinate quoting, and connect the project with manufacturing partners.</p>
+
+          <div class="info-block">
+            <span class="icon">&#128222;</span>
+            <div>
+              <h4 data-zh="电话">Phone</h4>
+              <a href="tel:+610490886257">+61 0490 886 257</a>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="icon">&#128205;</span>
+            <div>
+              <h4 data-zh="澳洲对接">Australia Contact</h4>
+              <p data-zh="R&amp;C Metal Pty Ltd<br>澳大利亚布里斯班<br>负责本地项目沟通与供应协调">R&C Metal Pty Ltd<br>Brisbane, Australia<br>Local project communication and supply coordination</p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="icon">&#127981;</span>
+            <div>
+              <h4 data-zh="制造合作方">Manufacturing Partner</h4>
+              <p data-zh="龙口昊宇特种铝制品有限公司<br><span style='color:var(--text-muted);font-size:13px;'>中国山东省龙口市</span><br><span style='color:var(--text-muted);font-size:13px;'>生产制造、认证与产能支持</span>">Longkou Haoyu Special Aluminum Products Co., Ltd.<br><span style="color:var(--text-muted);font-size:13px;">Longkou, Shandong, China</span><br><span style="color:var(--text-muted);font-size:13px;">Manufacturing, certification, and capacity support</span></p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <span class="icon">&#9875;</span>
+            <div>
+              <h4 data-zh="制造物流">Manufacturing Logistics</h4>
+              <table class="ports-grid">
+                <tr><td data-zh="龙口港">Longkou Port</td><td>30 km</td></tr>
+                <tr><td data-zh="烟台港">Yantai Port</td><td>80 km</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Contact Form -->
+        <div class="contact-form-panel">
+          <div class="form-rivet-tl"></div>
+          <div class="form-rivet-tr"></div>
+
+          <h2 data-zh="发送询盘">Send an Enquiry</h2>
+          <p data-zh="请填写以下表单，R&amp;C Metal 将在澳洲本地跟进您的询盘。">Fill in the form below and R&C Metal will follow up locally from Australia.</p>
+
+          <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName" data-zh="名 *">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="John"
+                  data-zh-ph data-zh-placeholder="名字" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName" data-zh="姓 *">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Smith"
+                  data-zh-ph data-zh-placeholder="姓氏" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" data-zh="电子邮箱 *">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com"
+                  data-zh-ph data-zh-placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone" data-zh="电话 / WhatsApp">Phone / WhatsApp</label>
+                <input type="tel" id="phone" name="phone" placeholder="+61 400 000 000"
+                  data-zh-ph data-zh-placeholder="+61 400 000 000" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="company" data-zh="公司 / 机构">Company / Organisation</label>
+              <input type="text" id="company" name="company" placeholder="Your company name (optional)"
+                data-zh-ph data-zh-placeholder="贵公司名称（选填）" />
+            </div>
+
+            <div class="form-group">
+              <label for="product" data-zh="感兴趣的产品 *">Product of Interest *</label>
+              <select id="product" name="product" required>
+                <option value="" disabled selected data-zh="请选择产品...">Select a product...</option>
+                <option value="footbridge" data-zh="铝合金人行天桥">Aluminum Pedestrian Footbridges</option>
+                <option value="dome" data-zh="铝合金穹顶结构">Aluminum Dome Structures</option>
+                <option value="helipad" data-zh="直升机停机坪">Helicopter Helipads</option>
+                <option value="corridor" data-zh="连廊桥梁">Connecting Corridor Bridges</option>
+                <option value="tower" data-zh="观景塔 / 瞭望塔">Observation &amp; Lookout Towers</option>
+                <option value="rail" data-zh="轨道交通零部件">Rail Transit Components</option>
+                <option value="automotive" data-zh="汽车 / 新能源汽车零部件">Automotive / NEV Components</option>
+                <option value="commercial" data-zh="商用车车身零部件">Commercial Vehicle Components</option>
+                <option value="extrusion" data-zh="定制挤压型材">Custom Extrusion Profiles</option>
+                <option value="other" data-zh="其他 / 待定">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" data-zh="项目详情 *">Project Details *</label>
+              <textarea id="message" name="message"
+                placeholder="Describe your project — product type, dimensions, quantities, delivery location, timeline, or any technical requirements..."
+                data-zh-ph data-zh-placeholder="请描述您的项目——产品类型、尺寸规格、数量、交货地点、工期要求或其他技术细节……"
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit" data-zh="发送询盘">
+              Send Enquiry
+            </button>
+          </form>
+
+          <!-- Success Message -->
+          <div class="form-success" id="formSuccess">
+            <span class="form-success-icon">&#9989;</span>
+            <h3 data-zh="询盘已发送！">Enquiry Sent!</h3>
+            <p data-zh="感谢您的联系！R&amp;C Metal 将在澳洲本地审阅并回复您的询盘。">Thank you for reaching out. R&C Metal will review your enquiry and respond from Australia.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAP PLACEHOLDER
+  ════════════════════════════════════════════════════════════ -->
+  <div class="map-section">
+    <div class="container">
+      <div class="map-placeholder">
+        <span class="map-icon">&#128506;</span>
+        <p data-zh="澳洲本地对接 · 中国制造合作方">Australia Support · China Manufacturing Partner</p>
+        <span class="map-sub" data-zh="可替换为澳洲公司或制造工厂地图嵌入代码">Replace with Australian office or manufacturing facility map embed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text" data-zh="R&amp;C <span>金属</span>">R&amp;C <span>Metal</span></span>
+          <p data-zh="R&amp;C Metal Pty Ltd — 澳洲本地项目对接、客户沟通、报价协调与铝合金产品供应支持。">R&amp;C Metal Pty Ltd — Australia-based project coordination, customer communication, quoting, and aluminium supply support.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-zh="导航">Navigation</h4>
+          <ul>
+            <li><a href="index.html" data-zh="首页">Home</a></li>
+            <li><a href="services.html" data-zh="产品">Products</a></li>
+            <li><a href="about.html" data-zh="关于我们">About Us</a></li>
+            <li><a href="contact.html" data-zh="联系我们">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-zh="产品板块">Product Lines</h4>
+          <ul>
+            <li><a href="services.html" data-zh="铝结构产品板块">Aluminum Structures</a></li>
+            <li><a href="services.html" data-zh="高端铝材料板块">High-End Materials</a></li>
+            <li><a href="services.html" data-zh="轨道交通深加工板块">Rail Transit</a></li>
+            <li><a href="services.html" data-zh="铝合金商用车板块">Commercial Vehicles</a></li>
+            <li><a href="services.html" data-zh="铝合金建筑模板板块">Building Formwork</a></li>
+            <li><a href="services.html" data-zh="铝汽车零部件板块">Automotive Parts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-zh="联系方式">Contact</h4>
+          <div class="footer-contact-item">
+            <span class="icon">&#128222;</span>
+            <span>+61 0490 886 257</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">&#128205;</span>
+            <span data-zh="澳大利亚布里斯班">Brisbane, Australia</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">&#127981;</span>
+            <span data-zh="R&amp;C Metal Pty Ltd">R&amp;C Metal Pty Ltd</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-zh="&copy; 2026 <span>R&amp;C Metal Pty Ltd</span>. 版权所有。">&copy; 2026 <span>R&amp;C Metal Pty Ltd</span>. All rights reserved.</p>
+        <p data-zh="精工 <span>轻量</span>，历久弥坚。">Engineered <span>light</span>. Built to last.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+  </script>
+  <script src="lang.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>

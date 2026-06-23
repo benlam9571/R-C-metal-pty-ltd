@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — R&C Metal Pty Ltd</title>
+  <meta name="description" content="Six aluminium product lines available through R&C Metal's Australia-based project coordination and certified manufacturing partner network." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .services-main { padding: var(--section-pad); background: var(--bg-dark); }
+    .service-feature { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 64px; border: 1px solid var(--border-steel); border-top: 4px solid var(--rust-primary); overflow: hidden; }
+    .service-feature.reverse { direction: rtl; }
+    .service-feature.reverse > * { direction: ltr; }
+    .service-feature-visual { background: repeating-linear-gradient(0deg,transparent,transparent 4px,rgba(255,255,255,0.02) 4px,rgba(255,255,255,0.02) 5px), repeating-linear-gradient(90deg,transparent,transparent 20px,rgba(0,0,0,0.06) 20px,rgba(0,0,0,0.06) 21px), linear-gradient(135deg,var(--bg-panel) 0%,var(--bg-mid) 100%); min-height: 280px; display: flex; align-items: center; justify-content: center; font-size: 80px; position: relative; overflow: hidden; }
+    .service-feature-visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center,rgba(176,180,186,0.10),transparent 70%); }
+    .service-feature-visual svg { width: 70%; max-width: 270px; opacity: 0.88; filter: drop-shadow(0 0 18px rgba(176,185,200,0.18)); position: relative; z-index: 1; }
+    /* ─── 产品图片 SERVICE IMAGES ───────────────────────── */
+    .service-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75; z-index: 0; }
+    .service-feature-visual:has(.service-img) { background: var(--bg-darkest); }
+    .service-feature-visual:has(.service-img) svg { opacity: 0.30; }
+    .service-feature-content { background: var(--bg-mid); padding: 48px; }
+    .service-feature-content h2 { font-family: var(--font-heading); font-size: 32px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 16px; }
+    .service-feature-content p { font-size: 16px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+    .spec-list { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .spec-list li { font-size: 14px; color: var(--text-secondary); padding: 7px 0; border-bottom: 1px solid var(--border-steel); display: flex; align-items: baseline; gap: 10px; }
+    .spec-list li strong { color: var(--text-primary); font-weight: 600; min-width: 110px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .service-tag { font-family: var(--font-accent); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--silver-primary); background: rgba(176,180,186,0.09); border: 1px solid var(--border-silver); padding: 5px 12px; }
+    .cert-section { padding: var(--section-pad); background: var(--bg-dark); }
+    .cert-grid { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 48px; }
+    .cert-badge { background: linear-gradient(135deg,var(--bg-light),var(--bg-panel)); border: 1px solid var(--border-rust); padding: 16px 28px; text-align: center; min-width: 120px; }
+    .cert-badge .cert-name { font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--rust-primary); letter-spacing: 1px; display: block; }
+    .cert-badge .cert-desc { font-size: 11px; color: var(--text-muted); margin-top: 4px; display: block; letter-spacing: 0.5px; }
+    .process-section { padding: var(--section-pad); background: var(--bg-mid); }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 36px; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg,var(--rust-dark),var(--rust-primary),var(--rust-dark)); }
+    .process-step { text-align: center; padding: 0 20px; position: relative; }
+    .step-number { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg,var(--rust-primary),var(--rust-dark)); border: 3px solid var(--bg-mid); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 26px; font-weight: 700; color: #fff; margin: 0 auto 24px; position: relative; z-index: 1; box-shadow: 0 0 20px var(--rust-glow); }
+    .process-step h3 { font-family: var(--font-heading); font-size: 18px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-primary); margin-bottom: 10px; }
+    .process-step p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
+    @media (max-width: 900px) { .service-feature { grid-template-columns: 1fr; } .service-feature.reverse { direction: ltr; } .service-feature-visual { min-height: 180px; } .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; } .process-steps::before { display: none; } }
+    @media (max-width: 600px) { .process-steps { grid-template-columns: 1fr; } .service-feature-content { padding: 32px 24px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">RC</div>
+        <span class="logo-text" data-zh="R&amp;C <span>金属</span>">R&amp;C <span>Metal</span></span>
+      </a>
+      <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html" data-zh="首页">Home</a></li>
+        <li><a href="services.html" class="active" data-zh="产品">Products</a></li>
+        <li><a href="about.html" data-zh="关于我们">About</a></li>
+        <li><a href="contact.html" data-zh="联系我们">Contact</a></li>
+      </ul>
+      <button class="lang-btn" onclick="toggleLang()">中文</button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="rivets"><div class="rivet"></div><div class="rivet"></div><div class="rivet"></div></div>
+        <h1 data-zh="我们的 <span>六大产品板块</span>">Our <span>Six Product Lines</span></h1>
+        <p data-zh="R&amp;C Metal 在澳洲负责项目落地对接、客户沟通与报价协调，连接六大铝合金产品线及认证制造能力：铝结构产品、高端铝材料、轨道交通深加工、商用车、建筑模板及汽车零部件。">R&C Metal provides Australia-based project support, customer communication, and quote coordination across six aluminium product lines backed by certified manufacturing capability: structures, high-end materials, rail transit, commercial vehicles, building formwork, and automotive parts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-main">
+    <div class="container">
+
+      <!-- 1 · 铝结构产品板块 -->
+      <div class="service-feature">
+        <div class="service-feature-visual">
+          <img src="images/铝合金人行天桥  .jpg" alt="Aluminium footbridge and structural products" class="service-img">
+          <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Deck -->
+            <line x1="10" y1="108" x2="230" y2="108" stroke="rgba(200,210,225,0.9)" stroke-width="4"/>
+            <!-- Main arch -->
+            <path d="M 10 108 Q 120 22 230 108" stroke="rgba(210,218,230,0.95)" stroke-width="3.5" fill="none"/>
+            <!-- Inner parallel arch -->
+            <path d="M 22 108 Q 120 36 218 108" stroke="rgba(176,185,200,0.28)" stroke-width="1.5" fill="none"/>
+            <!-- Vertical hangers -->
+            <line x1="60" y1="66" x2="60" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <line x1="80" y1="47" x2="80" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <line x1="100" y1="36" x2="100" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <line x1="120" y1="30" x2="120" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <line x1="140" y1="36" x2="140" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <line x1="160" y1="47" x2="160" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <line x1="180" y1="66" x2="180" y2="108" stroke="rgba(176,185,200,0.6)" stroke-width="1.5"/>
+            <!-- Deck lower rail -->
+            <line x1="10" y1="112" x2="230" y2="112" stroke="rgba(176,180,186,0.32)" stroke-width="1.5"/>
+            <!-- Abutments -->
+            <rect x="4" y="108" width="12" height="22" rx="1" fill="rgba(176,185,200,0.18)" stroke="rgba(200,210,225,0.7)" stroke-width="2"/>
+            <rect x="224" y="108" width="12" height="22" rx="1" fill="rgba(176,185,200,0.18)" stroke="rgba(200,210,225,0.7)" stroke-width="2"/>
+            <!-- Ground line -->
+            <line x1="0" y1="132" x2="240" y2="132" stroke="rgba(176,180,186,0.22)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="service-feature-content">
+          <h2 data-zh="铝结构产品板块">Aluminum Structure Products</h2>
+          <p data-zh="预制铝合金结构产品全系列——包括人行天桥（L/B/SL/R体系）、空间穹顶、直升机停机坪、连廊天桥及瞭望塔。全部采用螺栓连接工厂预制，无需现场焊接，重量仅为同等钢结构的三分之一至二分之一，使用寿命30至50年以上。">A comprehensive range of prefabricated aluminium structures — pedestrian footbridges (L/B/SL/R systems), spatial domes, helicopter helipads, corridor bridges, and observation towers. All bolt-connected and factory-assembled. One-third to one-half the weight of steel, with a 30–50+ year service life.</p>
+          <ul class="spec-list">
+            <li><strong data-zh="产品类型：">Product Types:</strong> <span data-zh="人行天桥 · 穹顶 · 停机坪 · 连廊天桥 · 瞭望塔">Footbridges &middot; Domes &middot; Helipads &middot; Corridor Bridges &middot; Towers</span></li>
+            <li><strong data-zh="重量优势：">Weight vs Steel:</strong> <span data-zh="1/3 至 1/2（结构类）；混凝土停机坪的30%">1/3 to 1/2 (structures); 30% of concrete (helipads)</span></li>
+            <li><strong data-zh="使用寿命：">Service Life:</strong> <span data-zh="30–50年以上（按产品类型而定）">30–50+ years depending on product type</span></li>
+            <li><strong data-zh="连接方式：">Assembly:</strong> <span data-zh="全螺栓连接，无需现场焊接">Fully bolt-connected, no site welding</span></li>
+            <li><strong data-zh="可回收性：">Recyclability:</strong> <span data-zh="寿命终止时可回收率≥95%">&ge;95% recoverable at end of life</span></li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag" data-zh="人行天桥">Footbridges</span>
+            <span class="service-tag" data-zh="铝合金穹顶">Domes</span>
+            <span class="service-tag" data-zh="直升机停机坪">Helipads</span>
+            <span class="service-tag" data-zh="连廊天桥">Corridor Bridges</span>
+            <span class="service-tag" data-zh="瞭望塔">Observation Towers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 · 高端铝材料板块 -->
+      <div class="service-feature reverse">
+        <div class="service-feature-visual">
+          <img src="images/高端铝材料.png" alt="High-end aluminium extrusion profiles" class="service-img">
+          <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- I-beam cross section -->
+            <g transform="translate(14,14)">
+              <rect x="0" y="0" width="62" height="10" rx="2" fill="rgba(176,185,200,0.16)" stroke="rgba(210,218,230,0.85)" stroke-width="2"/>
+              <rect x="24" y="10" width="14" height="44" fill="rgba(176,185,200,0.12)" stroke="rgba(200,210,225,0.72)" stroke-width="1.5"/>
+              <rect x="0" y="54" width="62" height="10" rx="2" fill="rgba(176,185,200,0.16)" stroke="rgba(210,218,230,0.85)" stroke-width="2"/>
+              <line x1="0" y1="0" x2="62" y2="0" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+            </g>
+            <!-- Hollow square tube -->
+            <g transform="translate(94,14)">
+              <rect x="0" y="0" width="52" height="64" rx="3" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.85)" stroke-width="2.5"/>
+              <rect x="9" y="9" width="34" height="46" rx="2" fill="none" stroke="rgba(176,180,186,0.32)" stroke-width="1.5"/>
+              <line x1="0" y1="0" x2="52" y2="0" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+            </g>
+            <!-- T-section -->
+            <g transform="translate(162,14)">
+              <rect x="0" y="0" width="64" height="10" rx="2" fill="rgba(176,185,200,0.16)" stroke="rgba(210,218,230,0.85)" stroke-width="2"/>
+              <rect x="24" y="10" width="16" height="54" rx="1" fill="rgba(176,185,200,0.12)" stroke="rgba(200,210,225,0.72)" stroke-width="1.5"/>
+              <line x1="0" y1="0" x2="64" y2="0" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+            </g>
+            <!-- Billet bars -->
+            <rect x="14" y="98" width="212" height="16" rx="8" fill="rgba(176,185,200,0.12)" stroke="rgba(210,218,230,0.7)" stroke-width="2"/>
+            <line x1="14" y1="98" x2="226" y2="98" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+            <rect x="14" y="122" width="212" height="24" rx="3" fill="rgba(176,185,200,0.09)" stroke="rgba(176,180,186,0.48)" stroke-width="1.5"/>
+            <line x1="84" y1="122" x2="84" y2="146" stroke="rgba(176,180,186,0.28)" stroke-width="1"/>
+            <line x1="154" y1="122" x2="154" y2="146" stroke="rgba(176,180,186,0.28)" stroke-width="1"/>
+            <line x1="14" y1="122" x2="226" y2="122" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="service-feature-content">
+          <h2 data-zh="高端铝材料板块">High-End Aluminum Materials</h2>
+          <p data-zh="优质铝合金铸锭、板坯及定制挤压型材——涵盖6xxx和7xxx系列合金。依托15台挤压压机（2000吨至10000吨），可生产截面最大950mm×580mm、长度最长30m的型材，满足建筑、工业及结构领域最高标准要求。配备自有阳极氧化、粉末涂装及电泳涂装生产线，提供一站式表面处理服务。">Premium aluminium alloy billets, slabs, and custom extrusion profiles — spanning 6xxx and 7xxx series alloys. Backed by 15 extrusion presses from 2,000 to 10,000 tonnes, producing sections up to 950 mm × 580 mm and lengths up to 30 m. In-house anodising, powder coating, and electrophoresis finishing for full surface protection.</p>
+          <ul class="spec-list">
+            <li><strong data-zh="挤压生产线：">Extrusion Lines:</strong> <span data-zh="15台，2000–10000吨">15 presses, 2,000 t – 10,000 t</span></li>
+            <li><strong data-zh="截面尺寸：">Profile Size:</strong> <span data-zh="截面最大950mm×580mm">Up to 950 mm &times; 580 mm</span></li>
+            <li><strong data-zh="型材长度：">Length:</strong> <span data-zh="最长30m每根">Up to 30 m per piece</span></li>
+            <li><strong data-zh="合金系列：">Alloys:</strong> <span data-zh="6xxx系和7xxx系结构及工业用铝">6xxx and 7xxx series for structural and industrial use</span></li>
+            <li><strong data-zh="表面处理：">Surface Treatment:</strong> <span data-zh="自有阳极氧化、粉末涂装及电泳涂装生产线">In-house anodising, powder coating, electrophoresis</span></li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag" data-zh="定制挤压型材">Custom Extrusion</span>
+            <span class="service-tag" data-zh="大截面型材">Large Format Profiles</span>
+            <span class="service-tag" data-zh="6xxx &amp; 7xxx系列">6xxx &amp; 7xxx Series</span>
+            <span class="service-tag" data-zh="自有表面处理">In-House Finishing</span>
+            <span class="service-tag" data-zh="年产能8万吨">80K Tonnes / Year</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 · 轨道交通深加工板块 -->
+      <div class="service-feature">
+        <div class="service-feature-visual">
+          <img src="images/轨道交通深加工.png" alt="Rail transit aluminium carbody components" class="service-img">
+          <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Train body -->
+            <rect x="14" y="38" width="212" height="72" rx="14" fill="rgba(176,185,200,0.08)" stroke="rgba(210,218,230,0.85)" stroke-width="2.5"/>
+            <!-- Cab nose detail -->
+            <path d="M 14 52 Q 14 38 28 38" stroke="rgba(200,210,225,0.45)" stroke-width="1" fill="none"/>
+            <path d="M 226 52 Q 226 38 212 38" stroke="rgba(200,210,225,0.45)" stroke-width="1" fill="none"/>
+            <!-- Window row -->
+            <rect x="34" y="52" width="28" height="20" rx="3" fill="rgba(176,185,200,0.22)" stroke="rgba(200,210,225,0.58)" stroke-width="1.5"/>
+            <rect x="74" y="52" width="28" height="20" rx="3" fill="rgba(176,185,200,0.22)" stroke="rgba(200,210,225,0.58)" stroke-width="1.5"/>
+            <rect x="114" y="52" width="28" height="20" rx="3" fill="rgba(176,185,200,0.22)" stroke="rgba(200,210,225,0.58)" stroke-width="1.5"/>
+            <rect x="154" y="52" width="28" height="20" rx="3" fill="rgba(176,185,200,0.22)" stroke="rgba(200,210,225,0.58)" stroke-width="1.5"/>
+            <rect x="194" y="52" width="28" height="20" rx="3" fill="rgba(176,185,200,0.22)" stroke="rgba(200,210,225,0.58)" stroke-width="1.5"/>
+            <!-- Door -->
+            <line x1="120" y1="78" x2="120" y2="110" stroke="rgba(176,180,186,0.28)" stroke-width="1.5"/>
+            <!-- Chrome stripe -->
+            <line x1="14" y1="83" x2="226" y2="83" stroke="rgba(200,210,225,0.22)" stroke-width="2"/>
+            <!-- Rail tracks -->
+            <line x1="0" y1="126" x2="240" y2="126" stroke="rgba(200,210,225,0.72)" stroke-width="3.5"/>
+            <line x1="0" y1="134" x2="240" y2="134" stroke="rgba(200,210,225,0.72)" stroke-width="3.5"/>
+            <!-- Sleepers -->
+            <line x1="28" y1="122" x2="28" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+            <line x1="60" y1="122" x2="60" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+            <line x1="92" y1="122" x2="92" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+            <line x1="124" y1="122" x2="124" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+            <line x1="156" y1="122" x2="156" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+            <line x1="188" y1="122" x2="188" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+            <line x1="216" y1="122" x2="216" y2="138" stroke="rgba(176,180,186,0.4)" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="service-feature-content">
+          <h2 data-zh="轨道交通深加工板块">Rail Transit Deep Processing</h2>
+          <p data-zh="为地铁、高铁、轻轨及有轨电车提供经认证的铝合金挤压型材及深加工组件，全面符合IRIS铁路行业标准及EN15085-2 CL1焊接标准，涵盖车体侧板、地板结构、屋顶型材及内装框架等各类产品。">Certified aluminium extrusion profiles and deep-processed components for metro, high-speed rail, light rail, and tram systems. Fully compliant with IRIS and EN15085-2 CL1 welding standards — covering carbody panels, floor structures, roof sections, and interior framing.</p>
+          <ul class="spec-list">
+            <li><strong data-zh="执行标准：">Standards:</strong> <span>IRIS &middot; EN15085-2 CL1</span></li>
+            <li><strong data-zh="截面及长度：">Profile &amp; Length:</strong> <span data-zh="截面最大950×580mm，长度最长30m">Up to 950 mm &times; 580 mm, lengths to 30 m</span></li>
+            <li><strong data-zh="适用车型：">Applications:</strong> <span data-zh="地铁车体、高铁地板、轻轨框架">Metro carbodies, HSR floor panels, light rail framing</span></li>
+            <li><strong data-zh="工艺：">Processes:</strong> <span data-zh="挤压、CNC加工、TIG/MIG焊接、表面处理">Extrusion, CNC machining, TIG/MIG welding, surface treatment</span></li>
+            <li><strong data-zh="检测：">Quality:</strong> <span data-zh="每批次100%尺寸及力学性能检测">100% dimensional and mechanical testing per batch</span></li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag">IRIS</span>
+            <span class="service-tag">EN15085-2 CL1</span>
+            <span class="service-tag" data-zh="地铁">Metro</span>
+            <span class="service-tag" data-zh="高铁">High-Speed Rail</span>
+            <span class="service-tag" data-zh="CNC深加工">CNC Deep Processing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 · 铝合金商用车板块 -->
+      <div class="service-feature reverse">
+        <div class="service-feature-visual">
+          <img src="images/铝合金商用车.png" alt="Aluminium commercial vehicle body systems" class="service-img">
+          <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Trailer box -->
+            <rect x="6" y="44" width="148" height="68" rx="3" fill="rgba(176,185,200,0.08)" stroke="rgba(210,218,230,0.85)" stroke-width="2.5"/>
+            <!-- Trailer panel ribs -->
+            <line x1="40" y1="44" x2="40" y2="112" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="74" y1="44" x2="74" y2="112" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="108" y1="44" x2="108" y2="112" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <!-- Trailer chrome trim -->
+            <line x1="6" y1="48" x2="154" y2="48" stroke="rgba(200,210,225,0.28)" stroke-width="1.5"/>
+            <line x1="6" y1="108" x2="154" y2="108" stroke="rgba(200,210,225,0.28)" stroke-width="1.5"/>
+            <!-- Cab -->
+            <path d="M 154 80 L 154 48 Q 154 44 160 44 L 182 44 Q 218 44 232 68 L 234 80 L 234 112 L 154 112 Z" fill="rgba(176,185,200,0.1)" stroke="rgba(210,218,230,0.85)" stroke-width="2.5"/>
+            <!-- Cab window -->
+            <path d="M 164 50 L 164 78 L 228 78 L 226 65 Q 220 50 202 50 Z" fill="rgba(176,185,200,0.24)" stroke="rgba(200,210,225,0.52)" stroke-width="1.5"/>
+            <!-- Headlight -->
+            <rect x="230" y="88" width="6" height="16" rx="2" fill="rgba(210,218,230,0.35)" stroke="rgba(200,210,225,0.6)" stroke-width="1"/>
+            <!-- Chassis line -->
+            <line x1="6" y1="112" x2="234" y2="112" stroke="rgba(200,210,225,0.38)" stroke-width="1.5"/>
+            <!-- Wheels -->
+            <circle cx="44" cy="122" r="12" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.8)" stroke-width="2.5"/>
+            <circle cx="44" cy="122" r="5" fill="rgba(176,185,200,0.2)" stroke="rgba(200,210,225,0.5)" stroke-width="1.5"/>
+            <circle cx="94" cy="122" r="12" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.8)" stroke-width="2.5"/>
+            <circle cx="94" cy="122" r="5" fill="rgba(176,185,200,0.2)" stroke="rgba(200,210,225,0.5)" stroke-width="1.5"/>
+            <circle cx="190" cy="122" r="12" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.8)" stroke-width="2.5"/>
+            <circle cx="190" cy="122" r="5" fill="rgba(176,185,200,0.2)" stroke="rgba(200,210,225,0.5)" stroke-width="1.5"/>
+            <circle cx="214" cy="122" r="12" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.8)" stroke-width="2.5"/>
+            <circle cx="214" cy="122" r="5" fill="rgba(176,185,200,0.2)" stroke="rgba(200,210,225,0.5)" stroke-width="1.5"/>
+            <!-- Ground -->
+            <line x1="0" y1="138" x2="240" y2="138" stroke="rgba(176,180,186,0.15)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="service-feature-content">
+          <h2 data-zh="铝合金商用车板块">Aluminum Alloy Commercial Vehicles</h2>
+          <p data-zh="为箱式货车、翼开启式半挂车及冷藏运输车提供铝合金车身系统及结构件。以铝替钢，可将车辆自重降低30%至40%，直接提升净载货量，并显著改善全队运营的燃油经济性。">Structural aluminium components and body systems for box-body trucks, wing-open semi-trailers, and refrigerated transport vehicles. Replacing steel with aluminium reduces vehicle tare weight by 30–40%, directly increasing net payload and improving fleet fuel economy.</p>
+          <ul class="spec-list">
+            <li><strong data-zh="适用车型：">Applications:</strong> <span data-zh="箱式货车、翼开启式半挂车、冷藏车">Box trucks, wing-open trailers, refrigerated vans</span></li>
+            <li><strong data-zh="减重效果：">Weight Saving:</strong> <span data-zh="较同等钢结构减重30–40%">30–40% vs. equivalent steel construction</span></li>
+            <li><strong data-zh="载重收益：">Payload Gain:</strong> <span data-zh="每车净载货量明显提升">Measurable increase in net cargo capacity per vehicle</span></li>
+            <li><strong data-zh="构件：">Components:</strong> <span data-zh="定制挤压地板梁、侧板、立柱">Custom extruded floor beams, side panels, corner posts</span></li>
+            <li><strong data-zh="表面处理：">Finish:</strong> <span data-zh="阳极氧化或粉末涂装，耐腐蚀及紫外线">Anodised or powder-coated for corrosion and UV resistance</span></li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag" data-zh="箱式车厢">Box Body</span>
+            <span class="service-tag" data-zh="冷藏运输">Refrigerated</span>
+            <span class="service-tag" data-zh="翼开启式">Wing-Open</span>
+            <span class="service-tag" data-zh="减重30–40%">30–40% Lighter</span>
+            <span class="service-tag" data-zh="载重优化">Payload Optimised</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 · 铝合金建筑模板板块 -->
+      <div class="service-feature">
+        <div class="service-feature-visual">
+          <img src="images/高端铝材料.png" alt="Aluminium building formwork installation" class="service-img">
+          <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- 3×3 formwork panel grid -->
+            <!-- Top row -->
+            <rect x="8" y="8" width="66" height="46" rx="2" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.82)" stroke-width="2"/>
+            <rect x="87" y="8" width="66" height="46" rx="2" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.82)" stroke-width="2"/>
+            <rect x="166" y="8" width="66" height="46" rx="2" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.82)" stroke-width="2"/>
+            <!-- Middle row -->
+            <rect x="8" y="64" width="66" height="46" rx="2" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.82)" stroke-width="2"/>
+            <rect x="87" y="64" width="66" height="46" rx="2" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.82)" stroke-width="2"/>
+            <rect x="166" y="64" width="66" height="46" rx="2" fill="rgba(176,185,200,0.09)" stroke="rgba(210,218,230,0.82)" stroke-width="2"/>
+            <!-- Bottom row (partial) -->
+            <rect x="8" y="120" width="66" height="32" rx="2" fill="rgba(176,185,200,0.07)" stroke="rgba(176,180,186,0.52)" stroke-width="1.5"/>
+            <rect x="87" y="120" width="66" height="32" rx="2" fill="rgba(176,185,200,0.07)" stroke="rgba(176,180,186,0.52)" stroke-width="1.5"/>
+            <rect x="166" y="120" width="66" height="32" rx="2" fill="rgba(176,185,200,0.07)" stroke="rgba(176,180,186,0.52)" stroke-width="1.5"/>
+            <!-- Internal ribs -->
+            <line x1="30" y1="8" x2="30" y2="54" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="52" y1="8" x2="52" y2="54" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="109" y1="8" x2="109" y2="54" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="131" y1="8" x2="131" y2="54" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="30" y1="64" x2="30" y2="110" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <line x1="52" y1="64" x2="52" y2="110" stroke="rgba(176,180,186,0.2)" stroke-width="1"/>
+            <!-- Connector pins at panel joints -->
+            <circle cx="77" cy="31" r="4" fill="rgba(176,185,200,0.24)" stroke="rgba(210,218,230,0.7)" stroke-width="2"/>
+            <circle cx="156" cy="31" r="4" fill="rgba(176,185,200,0.24)" stroke="rgba(210,218,230,0.7)" stroke-width="2"/>
+            <circle cx="77" cy="87" r="4" fill="rgba(176,185,200,0.24)" stroke="rgba(210,218,230,0.7)" stroke-width="2"/>
+            <circle cx="156" cy="87" r="4" fill="rgba(176,185,200,0.24)" stroke="rgba(210,218,230,0.7)" stroke-width="2"/>
+            <!-- Top highlight edges -->
+            <line x1="8" y1="8" x2="74" y2="8" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <line x1="87" y1="8" x2="153" y2="8" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+            <line x1="166" y1="8" x2="232" y2="8" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="service-feature-content">
+          <h2 data-zh="铝合金建筑模板板块">Aluminum Alloy Building Formwork</h2>
+          <p data-zh="适用于住宅及商业建筑混凝土浇筑的轻量化可重复使用铝合金模板体系。典型使用次数超过300次，与木模板或钢模板相比，铝合金模板可显著降低建筑废料及人工成本，并提供优质的光滑混凝土表面效果，无需二次抹灰。">Lightweight, reusable aluminium alloy formwork systems for concrete casting in residential and commercial construction. With a typical reuse count exceeding 300 cycles, aluminium formwork dramatically reduces construction waste and labour costs vs. timber or steel alternatives — delivering a superior smooth concrete surface with no plastering required.</p>
+          <ul class="spec-list">
+            <li><strong data-zh="重复使用次数：">Reuse Cycles:</strong> <span data-zh="每套模板超过300次">300+ per panel set</span></li>
+            <li><strong data-zh="模板重量：">Weight:</strong> <span data-zh="约18–22 kg/m²（钢模板为45–55 kg/m²）">~18–22 kg/m&sup2; (vs. 45–55 kg/m&sup2; for steel formwork)</span></li>
+            <li><strong data-zh="适用部位：">Application:</strong> <span data-zh="楼板、墙体、柱、梁、楼梯井">Slabs, walls, columns, beams, stairwells</span></li>
+            <li><strong data-zh="混凝土面层：">Surface Finish:</strong> <span data-zh="光滑混凝土成型，无需抹灰">Smooth concrete, no plastering required</span></li>
+            <li><strong data-zh="安装方式：">Assembly:</strong> <span data-zh="销楔或螺栓连接，无需大型机械">Pin-and-wedge or bolt system, no crane required</span></li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag" data-zh="300次以上复用">300+ Reuse Cycles</span>
+            <span class="service-tag" data-zh="无需抹灰">No Plastering</span>
+            <span class="service-tag" data-zh="楼板与墙体">Walls &amp; Slabs</span>
+            <span class="service-tag" data-zh="超轻量化">Lightweight</span>
+            <span class="service-tag" data-zh="降低建设成本">Cost Efficient</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 · 铝汽车零部件板块 -->
+      <div class="service-feature reverse">
+        <div class="service-feature-visual">
+          <img src="images/铝汽车零部件.png" alt="Precision aluminium automotive parts" class="service-img">
+          <svg viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Outer gear ring -->
+            <circle cx="120" cy="80" r="58" fill="rgba(176,185,200,0.05)" stroke="rgba(210,218,230,0.72)" stroke-width="2.5"/>
+            <!-- Inner web ring -->
+            <circle cx="120" cy="80" r="38" fill="rgba(176,185,200,0.08)" stroke="rgba(176,180,186,0.42)" stroke-width="1.5"/>
+            <!-- Hub -->
+            <circle cx="120" cy="80" r="13" fill="rgba(176,185,200,0.18)" stroke="rgba(210,218,230,0.85)" stroke-width="2.5"/>
+            <!-- 8 gear teeth (N/S/E/W + diagonals) -->
+            <rect x="112" y="14" width="16" height="14" rx="3" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="112" y="132" width="16" height="14" rx="3" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="54" y="72" width="14" height="16" rx="3" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="172" y="72" width="14" height="16" rx="3" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="70" y="28" width="14" height="14" rx="2.5" transform="rotate(-45 77 35)" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="156" y="28" width="14" height="14" rx="2.5" transform="rotate(45 163 35)" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="70" y="118" width="14" height="14" rx="2.5" transform="rotate(45 77 125)" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <rect x="156" y="118" width="14" height="14" rx="2.5" transform="rotate(-45 163 125)" fill="rgba(176,185,200,0.2)" stroke="rgba(210,218,230,0.8)" stroke-width="2"/>
+            <!-- Spokes (N/S/E/W) -->
+            <line x1="120" y1="44" x2="120" y2="67" stroke="rgba(200,210,225,0.42)" stroke-width="2"/>
+            <line x1="120" y1="93" x2="120" y2="116" stroke="rgba(200,210,225,0.42)" stroke-width="2"/>
+            <line x1="82" y1="80" x2="107" y2="80" stroke="rgba(200,210,225,0.42)" stroke-width="2"/>
+            <line x1="133" y1="80" x2="158" y2="80" stroke="rgba(200,210,225,0.42)" stroke-width="2"/>
+            <!-- Diagonal spokes -->
+            <line x1="93" y1="53" x2="109" y2="69" stroke="rgba(176,180,186,0.3)" stroke-width="1.5"/>
+            <line x1="147" y1="53" x2="131" y2="69" stroke="rgba(176,180,186,0.3)" stroke-width="1.5"/>
+            <line x1="93" y1="107" x2="109" y2="91" stroke="rgba(176,180,186,0.3)" stroke-width="1.5"/>
+            <line x1="147" y1="107" x2="131" y2="91" stroke="rgba(176,180,186,0.3)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="service-feature-content">
+          <h2 data-zh="铝汽车零部件板块">Aluminum Automotive Parts</h2>
+          <p data-zh="依托TS16949汽车质量管理体系，为乘用车及新能源汽车（NEV）生产精密铝合金零部件。产品涵盖车身结构件、底盘零件及电池框架模组，满足全球OEM供应链对尺寸精度及力学性能的严格要求。">Precision aluminium alloy parts for passenger vehicles and new energy vehicles (NEV), manufactured under the TS16949 automotive quality management system. Products include structural body parts, chassis components, and battery frame modules — meeting the dimensional and mechanical demands of global OEM supply chains.</p>
+          <ul class="spec-list">
+            <li><strong data-zh="执行标准：">Standard:</strong> <span>TS16949</span></li>
+            <li><strong data-zh="适用产品：">Applications:</strong> <span data-zh="车身结构件、底盘零件、NEV电池框架">Body structures, chassis parts, NEV battery frames</span></li>
+            <li><strong data-zh="合金系列：">Alloys:</strong> <span data-zh="高强度6xxx系列铝合金">High-strength 6xxx series aluminium</span></li>
+            <li><strong data-zh="生产工艺：">Processes:</strong> <span data-zh="精密挤压、CNC加工、热处理">Precision extrusion, CNC machining, heat treatment</span></li>
+            <li><strong data-zh="检测：">Testing:</strong> <span data-zh="每批次严格的尺寸、抗拉及硬度检测">Dimensional, tensile, and hardness inspection per batch</span></li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag">TS16949</span>
+            <span class="service-tag" data-zh="NEV电池框架">NEV Battery Frames</span>
+            <span class="service-tag" data-zh="乘用车">Passenger Cars</span>
+            <span class="service-tag" data-zh="OEM供应">OEM Supply</span>
+            <span class="service-tag" data-zh="精密加工">Precision Machined</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cert-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-zh="质量与合规">Quality &amp; Compliance</span>
+        <h2 class="section-title" data-zh="国际 <em>认证</em>">International <em>Certifications</em></h2>
+        <div class="section-divider"><span class="divider-icon">&#9733;</span></div>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-badge"><span class="cert-name">ISO 9001</span><span class="cert-desc" data-zh="质量管理">Quality Management</span></div>
+        <div class="cert-badge"><span class="cert-name">ISO 14001</span><span class="cert-desc" data-zh="环境管理">Environmental Management</span></div>
+        <div class="cert-badge"><span class="cert-name">ISO 45001</span><span class="cert-desc" data-zh="职业健康安全">Occupational Safety</span></div>
+        <div class="cert-badge"><span class="cert-name">IRIS</span><span class="cert-desc" data-zh="铁路行业标准">Railway Industry Standard</span></div>
+        <div class="cert-badge"><span class="cert-name">TS16949</span><span class="cert-desc" data-zh="汽车质量管理">Automotive Quality</span></div>
+        <div class="cert-badge"><span class="cert-name">DNV</span><span class="cert-desc" data-zh="挪威船级社">Det Norske Veritas</span></div>
+        <div class="cert-badge"><span class="cert-name">ABS</span><span class="cert-desc" data-zh="美国船级社">American Bureau of Shipping</span></div>
+        <div class="cert-badge"><span class="cert-name">LR</span><span class="cert-desc" data-zh="劳氏船级社">Lloyd's Register</span></div>
+        <div class="cert-badge"><span class="cert-name">CCS</span><span class="cert-desc" data-zh="中国船级社">China Classification Society</span></div>
+        <div class="cert-badge"><span class="cert-name">EN15085</span><span class="cert-desc" data-zh="焊接 CL1认证">Welding CL1 Certified</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-zh="澳洲对接流程">Australia Support Process</span>
+        <h2 class="section-title" data-zh="项目 <em>协作流程</em>">Project <em>Coordination Process</em></h2>
+        <div class="section-divider"><span class="divider-icon">&#9874;</span></div>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <h3 data-zh="询盘">Enquire</h3>
+          <p data-zh="提交您的项目需求——产品类型、尺寸、数量、交货地点及工期，R&amp;C Metal 将在澳洲本地跟进回复。">Contact us with product type, dimensions, quantities, delivery location, and timeline. R&C Metal follows up locally from Australia.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <h3 data-zh="工程设计">Engineer</h3>
+          <p data-zh="R&amp;C Metal 协调客户需求与制造合作方技术资料，推进结构计算、模具方案或车间图纸供您确认。">R&C Metal coordinates customer requirements with manufacturing partner technical resources, progressing calculations, die concepts, or shop drawings for approval.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <h3 data-zh="生产制造">Manufacture</h3>
+          <p data-zh="制造合作方在中国龙口完成精密挤压、机加工、焊接、表面处理及质量检验。">Manufacturing partners in Longkou, China complete precision extrusion, machining, welding, surface treatment, and quality inspection.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">04</div>
+          <h3 data-zh="交付">Deliver</h3>
+          <p data-zh="产品通过龙口港或烟台港发运，R&amp;C Metal 协助澳洲客户跟进供应进度及文件沟通。">Products ship via Longkou Port or Yantai Port, while R&C Metal assists Australian clients with supply updates and documentation coordination.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 56px;">
+        <a href="contact.html" class="btn btn-primary" data-zh="申请报价">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text" data-zh="R&amp;C <span>金属</span>">R&amp;C <span>Metal</span></span>
+          <p data-zh="R&amp;C Metal Pty Ltd — 澳洲本地项目对接、客户沟通、报价协调与铝合金产品供应支持。">R&amp;C Metal Pty Ltd — Australia-based project coordination, customer communication, quoting, and aluminium supply support.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-zh="导航">Navigation</h4>
+          <ul>
+            <li><a href="index.html" data-zh="首页">Home</a></li>
+            <li><a href="services.html" data-zh="产品">Products</a></li>
+            <li><a href="about.html" data-zh="关于我们">About Us</a></li>
+            <li><a href="contact.html" data-zh="联系我们">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-zh="产品板块">Product Lines</h4>
+          <ul>
+            <li><a href="services.html" data-zh="铝结构产品板块">Aluminum Structures</a></li>
+            <li><a href="services.html" data-zh="高端铝材料板块">High-End Materials</a></li>
+            <li><a href="services.html" data-zh="轨道交通深加工板块">Rail Transit</a></li>
+            <li><a href="services.html" data-zh="铝合金商用车板块">Commercial Vehicles</a></li>
+            <li><a href="services.html" data-zh="铝合金建筑模板板块">Building Formwork</a></li>
+            <li><a href="services.html" data-zh="铝汽车零部件板块">Automotive Parts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-zh="联系我们">Contact</h4>
+          <div class="footer-contact-item"><span class="icon">&#128222;</span><span>+61 0490 886 257</span></div>
+          <div class="footer-contact-item"><span class="icon">&#128205;</span><span data-zh="澳大利亚布里斯班">Brisbane, Australia</span></div>
+          <div class="footer-contact-item"><span class="icon">&#127981;</span><span data-zh="R&amp;C Metal Pty Ltd">R&amp;C Metal Pty Ltd</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-zh="&copy; 2026 <span>R&amp;C Metal Pty Ltd</span>. 版权所有。">&copy; 2026 <span>R&amp;C Metal Pty Ltd</span>. All rights reserved.</p>
+        <p data-zh="精工 <span>轻量</span>，历久弥坚。">Engineered <span>light</span>. Built to last.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="lang.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>
