@@ -1,4 +1,4 @@
-// lang.js — Haoyu Aluminum bilingual toggle
+// lang.js - Haoyu Aluminum bilingual toggle
 // Reads data-zh attributes and swaps innerHTML / placeholder on toggle.
 // Language choice is persisted to localStorage.
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — R&C Metal Pty Ltd</title>
+  <title>Contact - R&C Metal Pty Ltd</title>
   <meta name="description" content="Contact R&C Metal Pty Ltd in Australia for aluminium product enquiries, project coordination, quote support, and certified manufacturing supply access." />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -37,7 +37,7 @@
       margin-bottom: 12px;
     }
 
-    .contact-info-panel h2 span { color: var(--rust-primary); }
+    .contact-info-panel h2 span { color: var(--accent); }
 
     .contact-info-panel > p {
       font-size: 15px;
@@ -49,7 +49,8 @@
     .info-block {
       background: linear-gradient(160deg, var(--bg-light), var(--bg-mid));
       border: 1px solid var(--border-steel);
-      border-left: 4px solid var(--rust-primary);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-md);
       padding: 20px 24px;
       margin-bottom: 16px;
       display: flex;
@@ -69,7 +70,7 @@
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--rust-primary);
+      color: var(--accent);
       margin-bottom: 5px;
     }
 
@@ -98,7 +99,7 @@
 
     .ports-grid tr td:last-child {
       text-align: right;
-      color: var(--rust-primary);
+      color: var(--accent);
       font-weight: 600;
     }
 
@@ -106,7 +107,8 @@
     .contact-form-panel {
       background: linear-gradient(160deg, var(--bg-light) 0%, var(--bg-mid) 100%);
       border: 1px solid var(--border-steel);
-      border-top: 4px solid var(--rust-primary);
+      border-top: 2px solid var(--accent);
+      border-radius: var(--radius-md);
       padding: 48px;
       position: relative;
       overflow: hidden;
@@ -202,15 +204,16 @@
       background:
         repeating-linear-gradient(
           0deg, transparent, transparent 40px,
-          rgba(196, 80, 30, 0.04) 40px, rgba(196, 80, 30, 0.04) 41px
+          rgba(118, 169, 250, 0.04) 40px, rgba(118, 169, 250, 0.04) 41px
         ),
         repeating-linear-gradient(
           90deg, transparent, transparent 40px,
-          rgba(196, 80, 30, 0.04) 40px, rgba(196, 80, 30, 0.04) 41px
+          rgba(118, 169, 250, 0.04) 40px, rgba(118, 169, 250, 0.04) 41px
         ),
         linear-gradient(180deg, var(--bg-mid), var(--bg-darkest));
       height: 320px;
-      border: 1px solid var(--border-rust);
+      border: 1px solid rgba(118,169,250,0.24);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -395,8 +398,8 @@
             <div class="form-group">
               <label for="message" data-zh="项目详情 *">Project Details *</label>
               <textarea id="message" name="message"
-                placeholder="Describe your project — product type, dimensions, quantities, delivery location, timeline, or any technical requirements..."
-                data-zh-ph data-zh-placeholder="请描述您的项目——产品类型、尺寸规格、数量、交货地点、工期要求或其他技术细节……"
+                placeholder="Describe your project: product type, dimensions, quantities, delivery location, timeline, or any technical requirements..."
+                data-zh-ph data-zh-placeholder="请描述您的项目：产品类型、尺寸规格、数量、交货地点、工期要求或其他技术细节……"
                 required></textarea>
             </div>
 
@@ -424,7 +427,7 @@
     <div class="container">
       <div class="map-placeholder">
         <span class="map-icon">&#128506;</span>
-        <p data-zh="澳洲本地对接 · 中国制造合作方">Australia Support · China Manufacturing Partner</p>
+        <p data-zh="澳洲本地对接, 中国制造合作方">Australia Support, China Manufacturing Partner</p>
         <span class="map-sub" data-zh="可替换为澳洲公司或制造工厂地图嵌入代码">Replace with Australian office or manufacturing facility map embed</span>
       </div>
     </div>
@@ -438,7 +441,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="logo-text" data-zh="R&amp;C <span>金属</span>">R&amp;C <span>Metal</span></span>
-          <p data-zh="R&amp;C Metal Pty Ltd — 澳洲本地项目对接、客户沟通、报价协调与铝合金产品供应支持。">R&amp;C Metal Pty Ltd — Australia-based project coordination, customer communication, quoting, and aluminium supply support.</p>
+          <p data-zh="R&amp;C Metal Pty Ltd - 澳洲本地项目对接、客户沟通、报价协调与铝合金产品供应支持。">R&amp;C Metal Pty Ltd - Australia-based project coordination, customer communication, quoting, and aluminium supply support.</p>
         </div>
         <div class="footer-col">
           <h4 data-zh="导航">Navigation</h4>
