@@ -1,4 +1,4 @@
-// animations.js - R&C Metal Pty Ltd
+// animations.js — R&C Metal Pty Ltd
 // Scroll-reveal + number counters + metallic micro-effects
 // No dependencies. Auto-targets elements by CSS selector.
 
@@ -181,7 +181,7 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     7. RIVET STAGGER (about / sub-pages) - already CSS-handled,
+     7. RIVET STAGGER (about / sub-pages) — already CSS-handled,
         but add a slight random jitter for naturalness
   ────────────────────────────────────────────────────────── */
   function initRivets() {
@@ -191,7 +191,7 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     8. STORY PLATE - metallic pulse glow on mouse enter
+     8. STORY PLATE — metallic pulse glow on mouse enter
   ────────────────────────────────────────────────────────── */
   function initStoryPlate() {
     var plate = document.querySelector('.story-plate');
@@ -205,7 +205,7 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     9. NAV - add compact state after hero leaves top
+     9. NAV — add scroll-shrink class on scroll
   ────────────────────────────────────────────────────────── */
   function initNavScroll() {
     var nav = document.querySelector('nav');
@@ -216,23 +216,13 @@
       'nav{transition:background 0.4s ease}',
     ].join('');
     document.head.appendChild(navStyle);
-
-    var sentinel = document.createElement('span');
-    sentinel.setAttribute('aria-hidden', 'true');
-    sentinel.style.cssText = 'position:absolute;top:40px;left:0;width:1px;height:1px;pointer-events:none;';
-    document.body.prepend(sentinel);
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        nav.classList.toggle('scrolled', !entry.isIntersecting);
-      });
-    }, { threshold: 0 });
-
-    observer.observe(sentinel);
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
   }
 
   /* ──────────────────────────────────────────────────────────
-     BOOT - wait for DOM ready
+     BOOT — wait for DOM ready
   ────────────────────────────────────────────────────────── */
   function boot() {
     initReveal();

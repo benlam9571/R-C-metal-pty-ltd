@@ -1,7 +1,10 @@
 /* ============================================================
-   R&C METAL PTY LTD - INDUSTRIAL SILVER & STEEL THEME
-   style.css - Shared Stylesheet
+   R&C METAL PTY LTD — INDUSTRIAL SILVER & STEEL THEME
+   style.css — Shared Stylesheet
    ============================================================ */
+
+/* ─── GOOGLE FONTS ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500&family=Rajdhani:wght@400;500;600;700&display=swap');
 
 /* ─── DESIGN TOKENS ─────────────────────────────────────────── */
 :root {
@@ -18,23 +21,19 @@
   --silver-light:   #D8DCE2;   /* bright chrome highlight      */
   --silver-glow:    rgba(176, 180, 186, 0.20);
   --silver-bright:  #EDF0F4;   /* specular white-silver        */
-  --accent:         #76A9FA;
-  --accent-dark:    #2F5F9D;
-  --accent-soft:    rgba(118, 169, 250, 0.14);
-  --accent-glow:    rgba(118, 169, 250, 0.24);
 
-  /* Aliases - keeps all inline HTML var() references working  */
-  --rust-primary: var(--accent);
-  --rust-dark:    var(--accent-dark);
-  --rust-light:   #B9D5FF;
-  --rust-glow:    var(--accent-glow);
+  /* Aliases — keeps all inline HTML var() references working  */
+  --rust-primary: var(--silver-primary);
+  --rust-dark:    var(--silver-dark);
+  --rust-light:   var(--silver-light);
+  --rust-glow:    var(--silver-glow);
 
   /* Metal tones */
   --steel:        #7A8592;
   --steel-light:  #A8B4C0;
   --rivet:        #50606E;
 
-  /* Text - cool-toned */
+  /* Text — cool-toned */
   --text-primary:   #E8ECF2;
   --text-secondary: #96A2B0;
   --text-muted:     #5E6E7E;
@@ -45,15 +44,13 @@
   --border-steel:  rgba(120, 132, 148, 0.24);
 
   /* Typography */
-  --font-heading: "Aptos Display", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --font-body:    "Aptos", "Segoe UI", Roboto, Arial, sans-serif;
-  --font-accent:  "Aptos", "Segoe UI", Roboto, Arial, sans-serif;
-  --radius-sm: 6px;
-  --radius-md: 8px;
+  --font-heading: 'Oswald', 'Rajdhani', sans-serif;
+  --font-body:    'Roboto', sans-serif;
+  --font-accent:  'Rajdhani', sans-serif;
 
   /* Spacing */
-  --section-pad: 88px 0;
-  --container:   1240px;
+  --section-pad: 90px 0;
+  --container:   1180px;
 }
 
 /* ─── RESET & BASE ──────────────────────────────────────────── */
@@ -68,12 +65,11 @@ body {
   line-height: 1.7;
   min-height: 100vh;
   overflow-x: hidden;
-  text-rendering: optimizeLegibility;
 }
 
 /* ─── METALLIC TEXTURE PATTERNS ─────────────────────────────── */
 
-/* Brushed aluminium - fine horizontal grain */
+/* Brushed aluminium — fine horizontal grain */
 .texture-brushed {
   background-image:
     repeating-linear-gradient(
@@ -143,7 +139,10 @@ nav {
   border-bottom: 1px solid var(--border-steel);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.34);
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.6),
+    0 1px 0 rgba(255,255,255,0.05);
+  position: fixed;
 }
 
 /* Chrome shine strip on nav bottom */
@@ -156,7 +155,7 @@ nav::after {
     90deg,
     transparent 0%,
     rgba(255,255,255,0.06) 20%,
-    var(--accent) 50%,
+    var(--silver-primary) 50%,
     rgba(255,255,255,0.06) 80%,
     transparent 100%
   );
@@ -182,8 +181,8 @@ nav::after {
 
 /* Chrome hexagonal logo mark */
 .nav-logo .logo-mark {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: linear-gradient(
     145deg,
     #72767C 0%,
@@ -193,7 +192,7 @@ nav::after {
     #9CA2A8 78%,
     #68707A 100%
   );
-  border-radius: var(--radius-md);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,12 +210,12 @@ nav::after {
   font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: 1.2px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .nav-logo .logo-text span {
-  color: var(--accent);
+  color: var(--silver-primary);
 }
 
 /* Nav links */
@@ -233,7 +232,7 @@ nav::after {
   font-family: var(--font-accent);
   font-size: 14px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-secondary);
   text-decoration: none;
@@ -243,8 +242,8 @@ nav::after {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text-primary);
-  border-bottom-color: var(--accent);
+  color: var(--silver-light);
+  border-bottom-color: var(--silver-primary);
 }
 
 /* ─── LANGUAGE TOGGLE BUTTON ─────────────────────────────── */
@@ -252,12 +251,11 @@ nav::after {
   font-family: var(--font-accent);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--text-primary);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border-steel);
-  border-radius: var(--radius-sm);
+  color: var(--silver-primary);
+  background: transparent;
+  border: 1px solid var(--border-silver);
   padding: 6px 14px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
@@ -266,8 +264,8 @@ nav::after {
 }
 
 .lang-btn:hover {
-  background: var(--accent);
-  color: #08101D;
+  background: var(--silver-primary);
+  color: #0A0C10;
 }
 
 /* Mobile hamburger */
@@ -291,18 +289,17 @@ nav::after {
 
 /* ─── SECTION HEADER ────────────────────────────────────────── */
 .section-header {
-  text-align: left;
-  margin-bottom: 42px;
-  max-width: 760px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .section-label {
   font-family: var(--font-accent);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 2.4px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--silver-primary);
   display: block;
   margin-bottom: 12px;
 }
@@ -311,7 +308,7 @@ nav::after {
   font-family: var(--font-heading);
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-primary);
   line-height: 1.1;
@@ -319,12 +316,12 @@ nav::after {
 
 .section-title em {
   font-style: normal;
-  color: var(--accent);
+  color: var(--silver-primary);
 }
 
 /* Chrome divider */
 .section-divider {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
@@ -355,51 +352,61 @@ nav::after {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 26px;
+  padding: 14px 32px;
   font-family: var(--font-accent);
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 1.1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+  transition: all 0.25s ease;
   position: relative;
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
 }
 
-/* Primary - Chrome Silver */
+/* Primary — Chrome Silver */
 .btn-primary {
-  background: linear-gradient(180deg, #8DBBFF 0%, var(--accent) 48%, #4F87D8 100%);
-  color: #07111F;
-  box-shadow: 0 12px 28px rgba(47,95,157,0.28), inset 0 1px 0 rgba(255,255,255,0.36);
+  background: linear-gradient(
+    145deg,
+    #7C8088 0%,
+    #C4CAD2 35%,
+    #A2A8B0 55%,
+    #666C74 100%
+  );
+  color: #0A0C10;
+  box-shadow: 0 4px 16px rgba(176,180,186,0.18), inset 0 1px 0 rgba(255,255,255,0.32);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(180deg, #A5CBFF 0%, #86B7FF 48%, #5B94E8 100%);
-  box-shadow: 0 16px 34px rgba(47,95,157,0.36);
+  background: linear-gradient(
+    145deg,
+    #909498 0%,
+    #D4D8DF 35%,
+    #B2B8C0 55%,
+    #787C84 100%
+  );
+  box-shadow: 0 6px 24px rgba(176,180,186,0.35);
   transform: translateY(-2px);
 }
-.btn:active { transform: translateY(1px); }
 
-/* Outline - Steel */
+/* Outline — Steel */
 .btn-outline {
-  background: rgba(255,255,255,0.03);
+  background: transparent;
   color: var(--text-primary);
-  border: 1px solid var(--border-steel);
+  border: 2px solid var(--steel);
 }
 
 .btn-outline:hover {
   border-color: var(--silver-primary);
   color: var(--silver-light);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+  box-shadow: 0 0 16px var(--silver-glow);
 }
 
 /* ─── PAGE HERO (inner pages) ───────────────────────────────── */
 .page-hero {
-  padding: 132px 0 64px;
+  padding: 130px 0 60px;
   background:
     linear-gradient(160deg, rgba(176,180,186,0.06) 0%, transparent 50%),
     linear-gradient(180deg, var(--bg-darkest) 0%, var(--bg-mid) 100%);
@@ -439,7 +446,7 @@ nav::after {
   font-family: var(--font-heading);
   font-size: clamp(36px, 6vw, 64px);
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--text-primary);
   line-height: 1.0;
@@ -453,8 +460,7 @@ nav::after {
 .page-hero p {
   font-size: 17px;
   color: var(--text-secondary);
-  max-width: 720px;
-  line-height: 1.65;
+  max-width: 540px;
 }
 
 /* ─── RIVET DECORATORS ──────────────────────────────────────── */
@@ -483,9 +489,8 @@ nav::after {
     ),
     linear-gradient(160deg, var(--bg-light) 0%, var(--bg-mid) 100%);
   border: 1px solid var(--border-steel);
-  border-top: 2px solid var(--accent);
-  border-radius: var(--radius-md);
-  padding: 30px;
+  border-top: 3px solid var(--silver-primary);
+  padding: 32px;
   position: relative;
   transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
   overflow: hidden;
@@ -518,9 +523,9 @@ nav::after {
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.36);
-  border-color: rgba(118,169,250,0.58);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 20px var(--silver-glow);
+  border-color: var(--silver-primary);
 }
 
 .card-icon {
@@ -534,7 +539,7 @@ nav::after {
   font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 600;
-  letter-spacing: 0.8px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-primary);
   margin-bottom: 10px;
@@ -632,8 +637,7 @@ nav::after {
   padding: 14px 18px;
   background: var(--bg-panel);
   border: 1px solid var(--border-steel);
-  border-bottom: 1px solid var(--accent-dark);
-  border-radius: var(--radius-sm);
+  border-bottom: 2px solid var(--silver-dark);
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 15px;
@@ -646,8 +650,8 @@ nav::after {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  border-color: var(--silver-primary);
+  box-shadow: 0 0 0 3px var(--silver-glow);
 }
 
 .form-group textarea {
@@ -704,9 +708,9 @@ footer::before {
   font-family: var(--font-accent);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--silver-primary);
   margin-bottom: 18px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-silver);
@@ -887,16 +891,34 @@ footer::before {
   to   { max-width: 80px; opacity: 1; }
 }
 
-/* ─── HERO LOAD STATE ──────────────────────────────────────── */
-.hero-content .hero-eyebrow,
-.hero-content h1,
-.hero-content p,
-.hero-content .hero-actions,
-.page-hero-content h1,
-.page-hero-content p {
-  opacity: 1;
-  transform: none;
+/* ─── PAGE LOAD ─────────────────────────────────────────────── */
+body {
+  animation: rcPageLoad 0.45s ease both;
 }
+
+/* ─── HERO ENTRANCE (index.html) ────────────────────────────── */
+.hero-content .hero-eyebrow {
+  animation: rcFadeLeft 0.7s ease 0.25s both;
+}
+.hero-content h1 {
+  animation: rcFadeUp 0.75s ease 0.50s both;
+}
+.hero-content p {
+  animation: rcFadeUp 0.7s ease 0.75s both;
+}
+.hero-content .hero-actions {
+  animation: rcFadeUp 0.7s ease 0.95s both;
+}
+.hero-badge {
+  animation: rcScaleIn 0.75s cubic-bezier(0.34,1.56,0.64,1) 1.2s both, rcPulse 4s ease-in-out 2s infinite;
+}
+
+/* ─── PAGE HERO ENTRANCE (sub-pages) ───────────────────────── */
+.page-hero-content .rivets .rivet:nth-child(1) { animation: rcRivetPop 0.45s ease 0.2s both; }
+.page-hero-content .rivets .rivet:nth-child(2) { animation: rcRivetPop 0.45s ease 0.33s both; }
+.page-hero-content .rivets .rivet:nth-child(3) { animation: rcRivetPop 0.45s ease 0.46s both; }
+.page-hero-content h1 { animation: rcFadeUp 0.7s ease 0.5s both; }
+.page-hero-content p  { animation: rcFadeUp 0.7s ease 0.70s both; }
 
 /* ─── LOGO MARK hover glow ──────────────────────────────────── */
 .nav-logo .logo-mark {
@@ -920,7 +942,7 @@ nav::before {
   pointer-events: none;
 }
 
-/* ─── SCROLL REVEAL - base state (set by JS) ────────────────── */
+/* ─── SCROLL REVEAL — base state (set by JS) ────────────────── */
 .rc-reveal {
   opacity: 0;
   will-change: opacity, transform;
@@ -938,7 +960,7 @@ nav::before {
 /* Delay helpers (applied inline by JS) */
 /* JS sets transition-delay directly via style prop */
 
-/* ─── STAT BAR - counter items ─────────────────────────────── */
+/* ─── STAT BAR — counter items ─────────────────────────────── */
 .stat.rc-reveal.rc-in .stat-num {
   animation: rcStatReveal 0.5s ease both;
 }
