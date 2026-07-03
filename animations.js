@@ -55,6 +55,10 @@
   function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
 
   function animateCount(el, from, to, suffix, duration) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = to + suffix;
+      return;
+    }
     var start = null;
     function step(ts) {
       if (!start) start = ts;

@@ -67,6 +67,19 @@ body {
   overflow-x: hidden;
 }
 
+/* ─── KEYBOARD FOCUS STATES ─────────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible,
+.card-link:focus-visible {
+  outline: 2px solid var(--silver-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* ─── METALLIC TEXTURE PATTERNS ─────────────────────────────── */
 
 /* Brushed aluminium — fine horizontal grain */
